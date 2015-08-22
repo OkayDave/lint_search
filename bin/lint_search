@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'thor'
+require 'lint_search'
+
+module LintSearch
+  class CLI < Thor
+    include Thor::Actions
+    default_task :help
+
+
+    desc "search", "Search for a keyword and lint the first result"
+    method_option :query_url, aliases: "-q", desc: "Search query url", default: "http://www.google.co.uk/?q="
+    method_option :css_selector, aliases: "-c", desc: "Search result CSS selector", default: "h3.r a"
+    def search(keyword)
+      @lint_search = LintSearch::Search.new({
+        keyword:      keyword,
+        query_url:    options[:query_url],
+        css_selector: options[:css_selector]
+      })
+
+    end
+
+  end
+
+end
+
+
+LintSearch::CLI.start
