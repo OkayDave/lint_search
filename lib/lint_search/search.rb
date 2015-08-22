@@ -11,5 +11,14 @@ module LintSearch
       raise Exception.new("CSS Selector required") if @css_selector.nil?
       raise Exception.new("Query url required") if @query_url.nil?
     end
+  
+    def search
+       
+    end
+
+    def query
+      "#{@query_url}#{@keyword}"
+    end
+
   end
 end

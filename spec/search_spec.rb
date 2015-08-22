@@ -46,4 +46,16 @@ describe "LintSearch::Search" do
     end
 
   end
+
+  context ".search" do
+
+  end
+
+  context ".query" do
+    let(:search) { LintSearch::Search.new(params_good) }
+
+    it "returns concat of query_url and keyword" do
+      expect(search.query).to eq("http://www.google.co.uk/?q=test")
+    end
+  end
 end
