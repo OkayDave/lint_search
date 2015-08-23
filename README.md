@@ -1,4 +1,7 @@
+[![Circle CI](https://circleci.com/gh/OkayDave/lint_search/tree/master.svg?style=shield)](https://circleci.com/gh/OkayDave/lint_search/tree/master)
+
 # LintSearch
+
 
 LintSearch is a ruby console application for searching for a keyword and linting the HTML of the first result.
 
