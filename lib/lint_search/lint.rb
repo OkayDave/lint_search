@@ -25,9 +25,10 @@ module LintSearch
         form = page.forms.first
         form.texts.first.value = @search_result.url
         results_page = form.submit
-      
+        
         lint_results = []
         results_page.search(@css_selector).each do |item|
+          puts item.inspect
           lint_results << item.text
         end
         
