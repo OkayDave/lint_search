@@ -28,7 +28,6 @@ module LintSearch
         
         lint_results = []
         results_page.search(@css_selector).each do |item|
-          puts item.inspect
           lint_results << item.text
         end
         
