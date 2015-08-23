@@ -12,15 +12,33 @@ module LintSearch
 
     desc "search", "Search for a keyword and lint the first result"
     method_option :query_url, aliases: "-q", desc: "Search query url", default: "http://www.google.co.uk/"
-    method_option :css_selector, aliases: "-c", desc: "Search result CSS selector", default: "h3.r a"
+    method_option :query_css_selector, aliases: "-qc", desc: "Search result CSS selector", default: "h3.r a"
+    method_option :linter_url, aliases: "-l", desc: "Linter url", default: "https://validator.w3.org"
+    method_option :linter_css_selector, aliases: "lc", desc: "Linter CSS Selector", default: "li.info"
     def search(keyword)
+      puts "Searching for #{keyword}..."
       search_result = LintSearch::Search.new({
         keyword:      keyword,
         query_url:    options[:query_url],
-        css_selector: options[:css_selector]
-      })
+        css_selector: options[:query_css_selector]
+      }).search
 
-      puts search_result
+      puts "Linting #{search_result.url}..."
+      lint_result = LintSearch::Lint.new({
+        search_result: search_result,
+        linter_url: options[:linter_url],
+        css_selector: options[:linter_css_selector]
+      }).lint
+
+      puts "Complete!"
+      puts "Lint results of #{search_result.url} via #{options[:linter_url]}"
+      lint_result.each_with_index do |result, index|
+        puts "(#{index})"
+        puts result
+        puts "---"
+        puts ""
+      end
+
 
     end
 
