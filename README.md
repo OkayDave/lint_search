@@ -1,5 +1,3 @@
-[![Circle CI](https://circleci.com/gh/OkayDave/lint_search/tree/master.svg?style=shield)](https://circleci.com/gh/OkayDave/lint_search/tree/master)
-
 # LintSearch
 
 
@@ -24,7 +22,7 @@ To search for a keyword using only default settings run:
 
 For example, `lint_search search banana` will output:
 
-```
+```bash
 Searching for banana...
 Complete!
 Lint results of https://en.wikipedia.org/wiki/Banana via https://validator.w3.org
