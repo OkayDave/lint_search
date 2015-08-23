@@ -12,9 +12,9 @@ module LintSearch
 
     desc "search", "Search for a keyword and lint the first result"
     method_option :query_url, aliases: "-q", desc: "Search query url", default: "http://www.google.co.uk/"
-    method_option :query_css_selector, aliases: "-qc", desc: "Search result CSS selector", default: "h3.r a"
+    method_option :query_css_selector, aliases: "-c", desc: "Search result CSS selector", default: "h3.r a"
     method_option :linter_url, aliases: "-l", desc: "Linter url", default: "https://validator.w3.org"
-    method_option :linter_css_selector, aliases: "lc", desc: "Linter CSS Selector", default: "li.info"
+    method_option :linter_css_selector, aliases: "-r", desc: "Linter CSS Selector", default: "li.info"
     def search(keyword)
       puts "Searching for #{keyword}..."
       search_result = LintSearch::Search.new({
